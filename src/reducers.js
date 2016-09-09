@@ -3,6 +3,12 @@ import {
   RECEIVE_ARTICLES,
 } from './actions';
 
+/**
+ * [articles description]
+ * @param  {Object}  state       Initial state of the app
+ * @param  {Object}  action      Dispatched action
+ * @return {Object}              New state of the app
+ */
 function articles(state = {
   articles: [],
   isFetching: false,
@@ -22,4 +28,5 @@ function articles(state = {
   }
 }
 
-export default articles;
+// eslint-disable-next-line import/prefer-default-export
+export { articles };

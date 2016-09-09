@@ -1,42 +1,16 @@
 import React from 'react';
-import { View, Text, Image, Linking } from 'react-native';
+import { View, Text, Image, Linking, TouchableOpacity } from 'react-native';
+import theme from '../themes/default';
 
-const colors = {
-  body: '#44414B',
-  category: '#8B8783',
-  title: '#252630',
-};
-
-const style = {
-  body: {
-    alignSelf: 'flex-end',
-    color: colors.body,
-    marginTop: 10,
-  },
-  category: {
-    color: colors.category,
-    marginTop: 10,
-  },
-  post: {
-    borderColor: colors.title,
-    borderStyle: 'solid',
-    borderWidth: 2,
-    marginTop: 10,
-    padding: 20,
-  },
-  thumb: {
-    alignSelf: 'flex-start',
-    height: 150,
-    marginTop: 10,
-    width: 200,
-  },
-  title: {
-    color: colors.title,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-};
-
+/**
+ * Post component
+ * @param {Number} nid        ID of the post
+ * @param {String} title      The title of the article
+ * @param {String} body       The contents of the article
+ * @param {String} category   Category for the article
+ * @param {String} imageUrl   URL for an image
+ * @param {String} articleUrl URL of the page of the article
+ */
 const Post = ({
   nid,
   title,
@@ -45,16 +19,18 @@ const Post = ({
   imageUrl,
   articleUrl,
 }) => (
-  <View key={nid} style={style.post} >
-    <Text style={style.title} onPress={() => Linking.openURL(articleUrl)}>
-      {title}
-    </Text>
-    <Text style={style.body}>
-      {body}
-    </Text>
-    <Image source={{ uri: imageUrl }} style={style.thumb} />
+  <View key={nid} style={theme.postBox} >
     <Text>
-      Category: {category}
+      {category}
+    </Text>
+    <TouchableOpacity activeOpacity={0.5} onPress={() => Linking.openURL(articleUrl)}>
+      <Text style={theme.postTitle}>
+        {title}
+      </Text>
+    </TouchableOpacity>
+    <Image source={{ uri: imageUrl }} style={theme.postThumb} />
+    <Text style={theme.postBody}>
+      {body}
     </Text>
   </View>
 );

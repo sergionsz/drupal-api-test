@@ -5,7 +5,7 @@ import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import App from './App';
-import articles from './src/reducers';
+import { articles } from './src/reducers';
 import actions from './src/actions';
 
 const loggerMiddleware = createLogger();

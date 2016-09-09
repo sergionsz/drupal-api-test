@@ -15,10 +15,18 @@ const actions = {
       data,
     };
   },
+
+  /**
+   * Returns a funciton that dispatches a requestArticles action and
+   * then initiates article retrieval.
+   * After getting the articles, dispatches a receiveArticles action.
+   * @param  {Number} page   The page number to fetch articles from
+   * @return {function}      A function to be used by redux-thunk
+   */
   fetchArticles(page) {
     return (dispatch) => {
       dispatch(this.requestArticles());
-      getArticles(page).then(
+      return getArticles(page).then(
         data => dispatch(this.receiveArticles(data)),
         error => { throw Error(error); }
       );

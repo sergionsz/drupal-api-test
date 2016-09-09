@@ -20,6 +20,7 @@ const App = ({ dataSource, currentPage, dispatch, fetching }) => (
       articleUrl={rowData.article_url}
     />}
     onEndReached={() => {
+      /* If currently fetching, don't do anything */
       if (!fetching) {
         dispatch(actions.fetchArticles(currentPage + 1));
       }
